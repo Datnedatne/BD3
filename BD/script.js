@@ -676,7 +676,10 @@ function playTrack(idx) {
 function updateCountdowns() {
   const now = new Date();
 
-  const nextBday = new Date(2026, 4, 1, 0, 0, 0);
+  let nextBday = new Date(now.getFullYear(), 4, 1, 0, 0, 0);
+  if (now > nextBday) {
+    nextBday.setFullYear(now.getFullYear() + 1);
+  }
   const diff1 = nextBday - now;
   const d1 = Math.floor(diff1 / 86400000);
   const h1 = Math.floor((diff1 % 86400000) / 3600000);
